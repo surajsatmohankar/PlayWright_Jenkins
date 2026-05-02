@@ -23,6 +23,7 @@ test('API GET request', async ({ request }) => {
 
   const body = await response.json();
   expect(body.id).toBe(1);
+  
 });
 
 test('Dropdown selection', async ({ page }) => {
@@ -32,4 +33,5 @@ test('Dropdown selection', async ({ page }) => {
 
   const value = await page.locator('#oldSelectMenu').inputValue();
   expect(value).toBe('2');
+
 });
