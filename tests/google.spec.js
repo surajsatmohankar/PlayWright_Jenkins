@@ -1,7 +1,26 @@
 import { test, expect } from '@playwright/test';
-const { test, expect } = require('@playwright/test');
 
 test('Google search test', async ({ page }) => {
   await page.goto('https://www.google.com');
   await expect(page).toHaveTitle(/Google/);
+});
+
+test('Login test', async ({ page }) => {
+  await page.goto('https://practicetestautomation.com/practice-test-login/');
+
+  await page.fill('#username', 'student');
+  await page.fill('#password', 'Password123');
+  await page.click('#submit');
+
+  await expect(page.locator('.post-title')).toHaveText('Logged In Successfully');
+});
+
+
+test('API GET request', async ({ request }) => {
+  const response = await request.get('https://jsonplaceholder.typicode.com/posts/1');
+
+  expect(response.status()).toBe(200);
+
+  const body = await response.json();
+  expect(body.id).toBe(1);
 });
