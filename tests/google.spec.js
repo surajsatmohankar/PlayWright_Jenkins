@@ -24,3 +24,12 @@ test('API GET request', async ({ request }) => {
   const body = await response.json();
   expect(body.id).toBe(1);
 });
+
+test('Dropdown selection', async ({ page }) => {
+  await page.goto('https://demoqa.com/select-menu');
+
+  await page.selectOption('#oldSelectMenu', '2');
+
+  const value = await page.locator('#oldSelectMenu').inputValue();
+  expect(value).toBe('2');
+});
