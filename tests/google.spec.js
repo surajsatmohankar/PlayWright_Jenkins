@@ -23,8 +23,10 @@ test('API GET request', async ({ request }) => {
 
   const body = await response.json();
   expect(body.id).toBe(1);
-  
+
 });
+
+
 
 test('Dropdown selection', async ({ page }) => {
   await page.goto('https://demoqa.com/select-menu');
