@@ -16,6 +16,17 @@ test('Login test', async ({ page }) => {
 });
 
 
+test('Dropdown selection', async ({ page }) => {
+  await page.goto('https://demoqa.com/select-menu');
+
+  await page.selectOption('#oldSelectMenu', '2');
+
+  const value = await page.locator('#oldSelectMenu').inputValue();
+  expect(value).toBe('2');
+
+});
+
+
 test('API GET request', async ({ request }) => {
   const response = await request.get('https://jsonplaceholder.typicode.com/posts/1');
 
@@ -27,13 +38,3 @@ test('API GET request', async ({ request }) => {
 });
 
 
-
-test('Dropdown selection', async ({ page }) => {
-  await page.goto('https://demoqa.com/select-menu');
-
-  await page.selectOption('#oldSelectMenu', '2');
-
-  const value = await page.locator('#oldSelectMenu').inputValue();
-  expect(value).toBe('2');
-
-});
